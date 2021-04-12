@@ -35,7 +35,7 @@ app.use(
 		resave: false,
 		cookie: {
 			maxAge: 36000000,
-			secure: true,
+			secure: false,
 			httpOnly: true
 		}
 	})

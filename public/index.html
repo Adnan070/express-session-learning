@@ -1,24 +1,28 @@
 <html>
-	<head>
-		<title>Testing</title>
-	</head>
-	<body>
-		<button id='clickme'>Test me</button>
-		
-		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script> 
-			document.getElementById('clickme').addEventListener('click', () => {
-				axios.post('https://testingsession.herokuapp.com/')
-					.then(({data}) => {
-						console.log(data)
-					})
-					.catch((err) => console.log(err))
-				setTimeout(() => {
-					axios.get('https://testingsession.herokuapp.com/')
-						.then( ({data}) => console.log(data))
-						.catch( err => console.log(err))
-				},5000)
-			});
-		</script>
-	</body>
+  <head>
+    <title>Testing</title>
+  </head>
+  <body>
+    <button id="clickme">Test me</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.getElementById("clickme").addEventListener("click", () => {
+        axios
+          .post("https://testingsession.herokuapp.com/")
+          .then(({ data }) => {
+            console.log(data);
+          })
+          .catch((err) => console.log(err));
+        setTimeout(() => {
+          axios
+            .get("https://testingsession.herokuapp.com/", {
+				withCredentials: true,
+            })
+            .then(({ data }) => console.log(data))
+            .catch((err) => console.log(err));
+        }, 5000);
+      });
+    </script>
+  </body>
 </html>
