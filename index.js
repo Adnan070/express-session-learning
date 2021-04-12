@@ -54,9 +54,12 @@ app.post('/', (req,res) => {
 })
 
 app.get('/', (req,res) => {
-	res.json({
+	if(req.session.view) 
+	return res.json({
 		view: req.session.view
 	});
+	else 
+	return res.json({success: false,})
 })
 
 
