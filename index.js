@@ -4,6 +4,7 @@ const app = express();
 const session = require('express-session');
 const mongoose = require('mongoose');
 const Store = require('connect-mongo');
+const cors = require('cors')
 
 const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@ak-development.gmdnp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
@@ -20,7 +21,10 @@ const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@ak-deve
 })();
 
 app.use(express.json());
-
+app.use(cors({
+	origin: 'http://localhost:3000',
+	credentials: true,
+}));
 app.use(
 	session({
 		secret: 'noq_abc',
